@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pastiow CMS</title>
+  
+  <!-- Netlify CMS -->
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
+  
+  <!-- Style Kustom -->
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f5f5f5;
+      margin: 0;
+      padding: 20px;
+    }
+    .header {
+      background: #FF6B00;
+      color: white;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+    #nc-root {
+      --primary: #FF6B00;
+      --header-bg: #2C3A29;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header Kustom -->
+  <div class="header">
+    <h1>🛠 Admin Panel Pastiow</h1>
+    <p>Kelola konten website Pastiow.zone.id</p>
+  </div>
+
+  <!-- Container Netlify CMS -->
+  <div id="nc-root"></div>
+
+  <!-- Script Autentikasi -->
+  <script>
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", user => {
+        if (!user) {
+          window.netlifyIdentity.on("login", () => {
+            document.location.href = "/admin/";
+          });
+        }
+      });
+    }
+  </script>
+</body>
+</html>
